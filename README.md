@@ -16,7 +16,7 @@ The protocols main purpose is to eliminate the painful process of searching for 
   console.log('hash', osdb.compute(file));
 
 ## Tests
-
+* make sure to first unrar test file test/dummy.rar 
   npm test
 
 ## Contributing
