@@ -1,0 +1,29 @@
+{
+  "name": "OSDb-hash",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:blazvi/osdb-hash.git"
+  },
+  "keywords": [
+    "osdb",
+    "subtitles",
+    "opensubtitles",
+    "hash"
+  ],
+  "author": "Blaž Vizjak <blaz.vizjak@gmail.com> (https://github.com/blazvi)",
+  "license": "MIT (https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT)",
+  "bugs": {
+    "url": "https://github.com/blazvi/osdb-hash/issues"
+  },
+  "homepage": "https://github.com/blazvi/osdb-hash",
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "mocha": "^1.21.4"
+  }
+}
