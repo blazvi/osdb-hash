@@ -35,7 +35,7 @@ module.exports = (grunt) ->
                 options:
                     reporter: "spec"
                     quiet: false
-                src: ["test/test.js"]
+                src: ["test/lib/test.js"]
 
         grunt.registerTask "default", ["coffee"]
         grunt.registerTask "test", ["coffee", "mochaTest"]
