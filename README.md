@@ -9,11 +9,29 @@ The protocols main purpose is to eliminate the painful process of searching for 
   npm install osdb-hash --save
 
 ## Usage
+    
+  var OSDbHash = require("OSDb-hash"),
+      file = "test/breakdance.avi",
+      osdb = new OSDbHash(file),
+      onNotify,
+      onCompute,
+      onError;
+    
+  onNotify = function (message) {
+      console.log(message);
+  };
+      
+  onCompute = function (hash) {
+      console.log(hash);
+  };
+      
+  onError = function(err) {
+    console.log(err);
+  };
+    
+  osdb.compute(onNotify).then(onCompute).catch(onError);
 
-  var osdb = require('scapegoat'),
-      file = "test/breakdance.avi";
-
-  console.log('hash', osdb.compute(file));
+  
 
 ## Tests
 * make sure to first unrar test file test/dummy.rar 
