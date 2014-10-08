@@ -54,6 +54,15 @@ class OSDbHash
             notify 1
         )
 
+    computeAsync: (callback, notify) ->
+        @compute(notify)
+        .then((value)=>
+            callback? null, value
+        )
+        .catch((err)=>
+            callback? err
+        )
+        return
 
     _computeValueForChunk: (start, end) ->
         defered = whena.defer()
