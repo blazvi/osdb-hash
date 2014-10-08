@@ -27,7 +27,7 @@ class OSDbHash
             chunkSize = Math.min fileSize, @HASH_CHUNK_SIZE
         )
         .then(=>
-            @_computeValueForChunk 0, chunkSize - 1
+            @_computeValueForChunk 0, chunkSize
         )
         .then((value)=>
             sum = sum.add value
@@ -47,20 +47,23 @@ class OSDbHash
         defered = whena.defer()
         value   = Long.fromInt 0, true
 
-        stream  = fs.createReadStream @filename, {start: start, end: end}
+        fs.open @filename, "r", (err, fd)=>
+            if err
+                defered.reject err
+            else
+                length = end - start
+                fs.read fd, (new Buffer(length)), 0, length, start, (err, bytesRead, buffer)=>
+                    if err
+                        defered.reject err
+                    else
+                        for i in [0...buffer.length] by @BYTESIZE
+                            low  = buffer[@READ_FUNC] i,   true
+                            high = buffer[@READ_FUNC] i+4, true
+                            n = Long.fromBits low, high, true
+                            value = value.add n
 
-        stream.on "data", (buffer) =>
-            for i in [0...buffer.length] by @BYTESIZE
-                low  = buffer[@READ_FUNC] i,   true
-                high = buffer[@READ_FUNC] i+4, true
-                n = Long.fromBits low, high, true
-                value = value.add n
-
-        stream.on "end", ->
-            defered.resolve value
-
-        stream.on "error", (err) ->
-            defered.reject err
+                        fs.close fd
+                        defered.resolve value
 
         defered.promise
 
