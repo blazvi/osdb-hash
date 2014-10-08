@@ -24,8 +24,6 @@
   },
   "homepage": "https://github.com/blazvi/osdb-hash",
   "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-coffee": "^0.11.1",
     "long": "^2.1.0",
     "when": "^3.5.0"
   },
