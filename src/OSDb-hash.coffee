@@ -15,7 +15,7 @@ class OSDbHash
     constructor: (@filename) ->
 
 
-    compute: ->
+    compute: (notify = ->) ->
         sum = Long.fromInt 0, true
         chunkSize = null
         fileSize = null
@@ -26,11 +26,17 @@ class OSDbHash
             sum = sum.add Long.fromNumber(size, true)
             chunkSize = Math.min fileSize, @HASH_CHUNK_SIZE
         )
+        .tap(->
+            notify 0.25
+        )
         .then(=>
             @_computeValueForChunk 0, chunkSize
         )
         .then((value)=>
             sum = sum.add value
+        )
+        .tap(->
+            notify 0.5
         )
         .then(=>
             @_computeValueForChunk fileSize - chunkSize, fileSize
@@ -38,8 +44,14 @@ class OSDbHash
         .then((value)=>
             sum = sum.add value
         )
+        .tap(->
+            notify 0.75
+        )
         .then(=>
             sum.toString(16)
+        )
+        .tap(->
+            notify 1
         )
 
 
