@@ -1,11 +1,11 @@
 {
   "name": "OSDb-hash",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "./lib/OSDb-hash.js",
   "scripts": {
     "test": "grunt test",
-    "prepublish": "grunt"
+    "prepublish": "grunt test"
   },
   "repository": {
     "type": "git",

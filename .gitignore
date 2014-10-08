@@ -1,3 +1,4 @@
 node_modules
 test/dummy.bin
-lib
+test/lib
+npm-debug.log
