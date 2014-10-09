@@ -1,4 +1,4 @@
-OSDBb-hash
+osdb-hash
 =========
 
 A small library providing methods to calculate OSDb hash which is a protocol first introduced on the ​OpenSubtitles web site. 
@@ -6,31 +6,60 @@ The protocols main purpose is to eliminate the painful process of searching for 
 
 ## Installation
 
-  npm install osdb-hash --save
+```shell
+npm install osdb-hash --save
+```
+
+## Testing
+
+For running tests this two files have to be downloaded into test folder
+
+```shell
+cd test
+wget http://www.opensubtitles.org/addons/avi/breakdance.avi
+wget http://www.opensubtitles.org/addons/avi/dummy.rar
+unrar e dummy.bin
+cd ..
+grunt test
+```
 
 ## Usage
-    
-  var OSDbHash = require("osdb-hash"),
-      file = "test/breakdance.avi",
-      osdb = new OSDbHash(file),
-      onNotify,
-      onCompute,
-      onError;
-    
-  onNotify = function (message) {
-      console.log(message);
-  };
-      
-  onCompute = function (hash) {
-      console.log(hash);
-  };
-      
-  onError = function(err) {
-    console.log(err);
-  };
-    
-  osdb.compute(onNotify).then(onCompute).catch(onError);
 
+```javascript
+var OSDbHash = require("osdb-hash"),
+	file = "breakdance.avi",
+  	osdb = new OSDbHash(file),
+  	onNotify,
+  	onCompute,
+  	onComputeAsync,
+  	onError;
+
+onNotify = function (message) {
+  	console.log(message);
+};
+  
+onCompute = function (hash) {
+  	console.log(hash);
+};
+
+onComputeAsync = function (err, hash) {
+  	if (err) {
+  		console.log(err);
+  	} else {
+  		console.log(hash);
+  	}
+};
+  
+onError = function(err) {
+  	console.log(err);
+};
+
+// compute can be called using Promises/A+ 
+osdb.compute(onNotify).then(onCompute).catch(onError);
+
+// or asynchronously 
+osdb.computeAsync(onComputeAsync, onNotify);
+```
   
 
 ## Tests
@@ -50,5 +79,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Release History
 
-* 0.1.1 Removed Grunt as a dependency 
 * 0.1.0 Initial release
