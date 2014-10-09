@@ -1,8 +1,8 @@
 {
-  "name": "OSDb-hash",
+  "name": "osdb-hash",
   "version": "0.1.0",
   "description": "",
-  "main": "./lib/OSDb-hash.js",
+  "main": "./lib/osdb-hash.js",
   "scripts": {
     "test": "grunt test",
     "prepublish": "grunt test"

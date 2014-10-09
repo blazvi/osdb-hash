@@ -10,7 +10,7 @@ The protocols main purpose is to eliminate the painful process of searching for 
 
 ## Usage
     
-  var OSDbHash = require("OSDb-hash"),
+  var OSDbHash = require("osdb-hash"),
       file = "test/breakdance.avi",
       osdb = new OSDbHash(file),
       onNotify,
