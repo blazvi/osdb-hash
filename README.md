@@ -12,7 +12,7 @@ npm install osdb-hash --save
 
 ## Testing
 
-For running tests this two files have to be downloaded into test folder
+For running tests this two files have to be downloaded into test folder. Make sure to extract dummy.rar
 
 ```shell
 cd test
@@ -60,11 +60,6 @@ osdb.compute(onNotify).then(onCompute).catch(onError);
 // or asynchronously 
 osdb.computeAsync(onComputeAsync, onNotify);
 ```
-  
-
-## Tests
-* make sure to first unrar test file test/dummy.rar 
-  npm test
 
 ## Disclaimer
 
@@ -79,4 +74,5 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Release History
 
+* 0.1.1 README.md updates
 * 0.1.0 Initial release
