@@ -1,7 +1,7 @@
 osdb-hash
 =========
 
-A small library providing methods to calculate OSDb hash which is a protocol first introduced on the ​OpenSubtitles web site. 
+A small library providing methods to calculate OSDb hash. The protocol was first introduced on the ​[OpenSubtitles web site](http://www.opensubtitles.org). 
 The protocols main purpose is to eliminate the painful process of searching for subtitles on the web and make finding subtitles to your videos as fast and simple as possible.
 
 ## Installation
@@ -18,7 +18,7 @@ For running tests this two files have to be downloaded into test folder
 cd test
 wget http://www.opensubtitles.org/addons/avi/breakdance.avi
 wget http://www.opensubtitles.org/addons/avi/dummy.rar
-unrar e dummy.bin
+unrar e dummy.rar
 cd ..
 grunt test
 ```
